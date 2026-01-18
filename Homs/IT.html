@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Homs (25 - 30) | Ultimate Glass</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --glass-bg: rgba(20, 20, 35, 0.4); 
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.75);
+            
+            --telegram-color: #2AABEE;
+            --whatsapp-color: #25D366;
+            --insta-color: #E1306C;
+            --fb-color: #1877F2;
+            --main-font: 'Cairo', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #020205;
+            font-family: var(--main-font);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        /* الخلفيات المتحركة */
+        body::before {
+            content: '';
+            position: fixed;
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(0, 243, 255, 0.25), transparent 60%);
+            top: -15%;
+            left: -15%;
+            z-index: 0;
+            animation: moveOrb1 10s infinite alternate ease-in-out;
+            filter: blur(50px);
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(60, 40, 255, 0.3), transparent 60%);
+            bottom: -10%;
+            right: -10%;
+            z-index: 0;
+            animation: moveOrb2 12s infinite alternate ease-in-out;
+            filter: blur(60px);
+        }
+
+        .extra-orb {
+            position: fixed;
+            top: 40%;
+            left: 40%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(180, 20, 255, 0.15), transparent 70%);
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            filter: blur(40px);
+            animation: pulseOrb 8s infinite ease-in-out;
+        }
+
+        @keyframes moveOrb1 { 0% { transform: translate(0, 0); } 100% { transform: translate(30px, 50px); } }
+        @keyframes moveOrb2 { 0% { transform: translate(0, 0); } 100% { transform: translate(-40px, -30px); } }
+        @keyframes pulseOrb { 0% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); } 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); } }
+
+        /* --- الكارد الأساسي --- */
+        .glass-card {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 500px; 
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px) saturate(150%);
+            -webkit-backdrop-filter: blur(25px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 35px;
+            padding: 45px 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            transition: max-width 0.5s ease;
+        }
+
+        /* --- ميديا كويري للابتوب والشاشات الكبيرة --- */
+        @media (min-width: 992px) {
+            .glass-card {
+                max-width: 900px; 
+            }
+            
+            .content-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr; 
+                gap: 40px;
+                align-items: start;
+            }
+            
+            .logos-row, .footer, .header {
+                grid-column: 1 / -1;
+            }
+
+            .right-column {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-weight: 900;
+            font-size: 2.8rem;
+            margin: 0;
+            background: linear-gradient(135deg, #00C6FF 0%, #0072FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(0, 114, 255, 0.4));
+            letter-spacing: -1px;
+            position: relative;
+        }
+        
+        h1::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 30%, rgba(255,255,255,0.6) 50%, transparent 70%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 100%;
+            background-position: -100%;
+            animation: shimmer 5s infinite;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: 200%; }
+            100% { background-position: -200%; }
+        }
+
+        .section-label {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 20px 0 10px 0;
+            padding-right: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.9;
+        }
+        
+        .content-grid > div:first-child .section-label:first-child {
+            margin-top: 0;
+        }
+
+        .section-label i { font-size: 1rem; }
+
+        .group-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .glass-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 22px;
+            text-decoration: none;
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+        }
+
+        .icon-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3rem;
+            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
+        }
+
+        /* --- حركة الدوران للأيقونات --- */
+        .icon-box i {
+            /* حركة تأرجح/دوران مستمرة */
+            animation: iconSwing 3s ease-in-out infinite;
+        }
+
+        @keyframes iconSwing {
+            0% { transform: rotate(0deg); }
+            20% { transform: rotate(15deg); }
+            40% { transform: rotate(-10deg); }
+            60% { transform: rotate(5deg); }
+            80% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .glass-btn span {
+            font-weight: 700;
+            font-size: 1rem;
+            flex-grow: 1;
+            margin-right: 18px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .arrow-icon {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.3);
+            transition: 0.3s;
+        }
+
+        .glass-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        /* عند التحويم تدور الأيقونة دورة كاملة */
+        .glass-btn:hover .icon-box i {
+            animation: iconSpinHover 0.6s ease-out;
+        }
+        
+        @keyframes iconSpinHover {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .glass-btn:hover .arrow-icon {
+            color: #fff;
+            transform: translateX(-5px);
+        }
+
+        /* ألوان الأيقونات */
+        .telegram-zone .icon-box { color: var(--telegram-color); }
+        .telegram-zone .glass-btn:hover .icon-box { background: var(--telegram-color); color: white; box-shadow: 0 0 20px rgba(42, 171, 238, 0.5); }
+        
+        .fb-zone .icon-box { color: var(--fb-color); }
+        .fb-zone .glass-btn:hover .icon-box { background: var(--fb-color); color: white; box-shadow: 0 0 20px rgba(24, 119, 242, 0.5); }
+
+        .insta-zone .icon-box { color: var(--insta-color); }
+        .insta-zone .glass-btn:hover .icon-box { background: var(--insta-color); color: white; box-shadow: 0 0 20px rgba(225, 76, 132, 0.5); }
+
+        .wa-zone .icon-box { color: var(--whatsapp-color); }
+        .wa-zone .glass-btn:hover .icon-box { background: var(--whatsapp-color); color: white; box-shadow: 0 0 20px rgba(37, 211, 102, 0.5); }
+
+        /* --- توزيع الصور --- */
+        .logos-row {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 15px;
+            margin-top: 45px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            flex-wrap: nowrap;
+        }
+
+        .logo-img {
+            transition: 0.4s;
+            filter: grayscale(10%) drop-shadow(0 0 5px rgba(0,0,0,0.3));
+            opacity: 0.8;
+            object-fit: contain;
+        }
+
+        .logo-standard {
+            height: 75px; 
+            width: auto;
+            max-width: 80px;
+        }
+
+        .logo-wide {
+            height: 50px; 
+            width: auto;
+            max-width: 140px; 
+        }
+
+        .logo-img:hover {
+            opacity: 1;
+            transform: scale(1.1);
+            filter: grayscale(0%) drop-shadow(0 0 15px rgba(255,255,255,0.4));
+        }
+
+        /* --- التذييل --- */
+        .footer {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+        }
+
+        /* تعديل الاسم */
+        .footer span {
+            font-family: var(--main-font); /* العودة للخط الأساسي */
+            font-size: 1.1rem;
+            color: #00C6FF; /* لون أزرق سماوي مضيء */
+            position: relative;
+            display: inline-block;
+            margin-right: 5px;
+            letter-spacing: 3px; /* تباعد الأحرف */
+            font-weight: 900;
+            text-shadow: 0 0 15px rgba(0, 198, 255, 0.4); /* إشعاع خفيف وأنيق */
+            animation: none; /* إيقاف النبض */
+        }
+
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <div class="extra-orb"></div>
+
+    <div class="glass-card">
+        
+        <div class="header">
+            <h1 data-text="IT Homs (25 - 30)">IT Homs (25 - 30)</h1>
+        </div>
+
+        <!-- تغليف المحتوى لعمل Grid على اللابتوب -->
+        <div class="content-grid">
+            
+            <!-- العمود الأول -->
+            <div class="left-column">
+                <div class="section-label telegram-zone">
+                    <i class="fab fa-telegram" style="color: var(--telegram-color)"></i> Telegram
+                </div>
+                <div class="group-container telegram-zone">
+                    <a href="https://t.me/+XyKvv4gxdD9kMDc0" class="glass-btn" target="_blank">
+                        <div class="icon-box"><i class="fab fa-telegram-plane"></i></div>
+                        <span>غروب السنة الأولى</span>
+                        <i class="fas fa-chevron-left arrow-icon"></i>
+                    </a>
+
+                    <a href="https://t.me/+0T6nH5iRlsJjNTg0" class="glass-btn" target="_blank">
+                        <div class="icon-box"><i class="fas fa-database"></i></div>
+                        <span>قناة المحاضرات</span>
+                        <i class="fas fa-chevron-left arrow-icon"></i>
+                    </a>
+
+                    <a href="https://t.me/ITE_N_HOMS" class="glass-btn" target="_blank">
+                        <div class="icon-box"><i class="fas fa-bullhorn"></i></div>
+                        <span>قناة الإعلانات</span>
+                        <i class="fas fa-chevron-left arrow-icon"></i>
+                    </a>
+
+                    <a href="https://t.me/IT_Homs_Lectures_Bot" class="glass-btn" target="_blank">
+                        <div class="icon-box"><i class="fas fa-robot"></i></div>
+                        <span>بوت المحاضرات</span>
+                        <i class="fas fa-chevron-left arrow-icon"></i>
+                    </a>
+
+                    <a href="https://t.me/SyriaUN" class="glass-btn" target="_blank">
+                        <div class="icon-box"><i class="fab fa-telegram"></i></div>
+                        <span>أخبار الجامعات</span>
+                        <i class="fas fa-chevron-left arrow-icon"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- العمود الثاني -->
+            <div class="right-column">
+                <!-- فيسبوك -->
+                <div class="section-label fb-zone">
+                    <i class="fab fa-facebook" style="color: var(--fb-color)"></i> Facebook
+                </div>
+                <div class="group-container fb-zone">
+                    <a href="https://www.facebook.com/share/17pU3TgiTw/" class="glass-btn" target="_blank">
+                        <div class="icon-box"><i class="fab fa-facebook-f"></i></div>
+                        <span>فيسبوك الكلية</span>
+                        <i class="fas fa-chevron-left arrow-icon"></i>
+                    </a>
+                </div>
+
+                <!-- انستغرام -->
+                <div class="section-label insta-zone">
+                    <i class="fab fa-instagram" style="color: var(--insta-color)"></i> Instagram
+                </div>
+                <div class="group-container insta-zone">
+                    <a href="https://www.instagram.com/it.homs.uni?igsh=MTZvcnltZW55ZHczcA==" class="glass-btn" target="_blank">
+                        <div class="icon-box"><i class="fab fa-instagram"></i></div>
+                        <span>انستغرام الكلية</span>
+                        <i class="fas fa-chevron-left arrow-icon"></i>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/sunion.homs.uni?igsh=MXZiZ3dpb2V6cjJodw==" class="glass-btn" target="_blank">
+                        <div class="icon-box"><i class="fab fa-instagram"></i></div>
+                        <span>انستغرام اتحاد الطلبة</span>
+                        <i class="fas fa-chevron-left arrow-icon"></i>
+                    </a>
+                </div>
+
+                <!-- واتساب -->
+                <div class="section-label wa-zone">
+                    <i class="fab fa-whatsapp" style="color: var(--whatsapp-color)"></i> WhatsApp
+                </div>
+                <div class="group-container wa-zone">
+                    <a href="https://whatsapp.com/channel/0029VbBfaTBADTOEL64Mkw2I" class="glass-btn" target="_blank">
+                        <div class="icon-box"><i class="fab fa-whatsapp"></i></div>
+                        <span>قناة واتساب اتحاد الطلبة</span>
+                        <i class="fas fa-chevron-left arrow-icon"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="logos-row">
+            <img src="uni_logo.jpg" alt="University Logo" class="logo-img logo-standard">
+            <img src="admin_logo.png" alt="Admin Body Logo" class="logo-img logo-standard">
+            <img src="union_logo.png" alt="Student Union Logo" class="logo-img logo-wide">
+        </div>
+
+        <div class="footer">
+            تم التطوير بواسطة <span>محمد صافي</span>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123) { return false; } 
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
+        }
+    </script>
+</body>
+</html>
